@@ -8,8 +8,10 @@ FLOW_SENSOR = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(FLOW_SENSOR, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
-global count
+global count,loop
 count = 0
+loop = 0
+RGPIO = 27
 
 def countPulse(channel):
     global count
@@ -25,6 +27,14 @@ while True:
         flow = round((count / 7.5), 2)
         print('The flow is: {} Liter/min'.format(flow))
         count = 0 # every second we output the flow and zero the counter
+        loop += 1
+
+        if ((loop % 10) == 0):
+            GPIO.setup(RGPIO, GPIO.OUT)
+            GPIO.output(RGPIO, GPIO.LOW)
+            time.sleep(1)
+            GPIO.output(RGPIO, GPIO.HIGH)
+            
     except KeyboardInterrupt:
         print('\ncaught keyboard interrupt!, bye')
         GPIO.cleanup()
