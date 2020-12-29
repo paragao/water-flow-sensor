@@ -85,19 +85,21 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.menuTitle}>
-            Water plants project
-          </Typography>
-          <Button color="inherit" onClick={takePic1}> Camera 1 </Button>
-          <Button color="inherit" onClick={takePic2}> Camera 2 </Button>
-        </Toolbar>
-      </AppBar>
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.menuTitle}>
+                Water plants project
+              </Typography>
+              <Button color="inherit" onClick={takePic1}> Camera 1 </Button>
+              <Button color="inherit" onClick={takePic2}> Camera 2 </Button>
+            </Toolbar>
+          </AppBar>
+        </Grid>
         <Grid item xs={12}>
           <Grid item xs={6}>
             <Paper elevation={3}>
