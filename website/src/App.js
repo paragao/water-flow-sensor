@@ -25,7 +25,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
-import { orange } from '@material-ui/core/colors';
+import CircularProgress from '@material-ui/core/CircularProgress';
 //End Material-UI
 
 //MaterialUI configuration
@@ -67,13 +67,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 //End Material UI
 
+function renderPic(cam) {
+  if (showProgress) {
+    return <CircularProgress />
+  } else {
+    if (cam === 'cam1') {
+      return <img src='cameras/cam1.png' />
+    }
+    if (cam === 'cam2') {
+      return <img src='cameras/cam2.png' />
+    }
+  }
+}
+
 function App() {
 
   const classes = useStyles();
+  const [showProgress, setProgress] = useState(false);
 
   const takePic1 = () => {
+    setProgress(true);
     axios.get('http://192.168.171.71:3030/cam1').then(response => {
       console.log(response.data);
+      setProgress(false)
     })
   }
 
@@ -103,12 +119,12 @@ function App() {
         <Grid item xs={12}>
           <Grid item xs={6}>
             <Paper elevation={3}>
-              <img src='cameras/cam1.png'></img>
+              {renderPic(cam1)}
             </Paper>
           </Grid>
           <Grid item xs={6}>
             <Paper elevation={3}>
-              <img src='cameras/cam2.png'></img>
+              {renderPic(cam2)}
             </Paper>
           </Grid>
         </Grid>
