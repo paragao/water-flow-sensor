@@ -72,13 +72,13 @@ function App() {
   const classes = useStyles();
 
   const takePic1 = () => {
-    axios.get('http://localhost:3030/cam1').then(response => {
+    axios.get('http://192.168.171.71:3030/cam1').then(response => {
       console.log(response.data);
     })
   }
 
   const takePic2 = () => {
-    axios.get('http://localhost:3030/cam2').then(response => {
+    axios.get('http://192.168.171.71:3030/cam2').then(response => {
       console.log(response.data);
     })
   }
@@ -99,7 +99,16 @@ function App() {
       </AppBar>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-
+          <Grid item xs={6}>
+            <Paper elevation={3}>
+              <img src='cameras/cam1.png'></img>
+            </Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper elevation={3}>
+              <img src='cameras/cam2.png'></img>
+            </Paper>
+          </Grid>
         </Grid>
       </Grid>
     </div>
