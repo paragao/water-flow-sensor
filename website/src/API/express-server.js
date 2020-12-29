@@ -10,7 +10,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/cam1', (req, res, next) => {
     console.log("cam1");
-    exec("/usr/bin/fswebcam -r 1280x720 -d /dev/video0 --png 9 /home/pi/water-flow-sensor/website/cameras/cam1.png", (err, stdout, stderr) => {
+    exec("/usr/bin/fswebcam -r 1280x720 -d /dev/video0 --png 9 /var/www/html/water-plants/cameras/cam1.png", (err, stdout, stderr) => {
         if (err) {
             console.log(`error: ${err.message}`)
             return res.json({message: err});
@@ -26,7 +26,7 @@ app.get('/cam1', (req, res, next) => {
 
 app.get('/cam2', (req, res, next) => {
     console.log('cam2');
-    exec("/usr/bin/fswebcam -r 1280x720 -d /dev/video2 --png 9 /home/pi/water-flow-sensor/website/cameras/cam2.png", (err, stdout, stderr) => {
+    exec("/usr/bin/fswebcam -r 1280x720 -d /dev/video2 --png 9 /var/www/html/water-plants/cameras/cam2.png", (err, stdout, stderr) => {
         if (err) {
             console.log(`error: ${err.message}`)
             return res.json({message: err});
