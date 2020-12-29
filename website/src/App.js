@@ -67,23 +67,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 //End Material UI
 
-function renderPic(cam) {
-  if (showProgress) {
-    return <CircularProgress />
-  } else {
-    if (cam === 'cam1') {
-      return <img src='cameras/cam1.png' />
-    }
-    if (cam === 'cam2') {
-      return <img src='cameras/cam2.png' />
-    }
-  }
-}
-
 function App() {
 
   const classes = useStyles();
   const [showProgress, setProgress] = useState(false);
+
+  const renderPic = (cam) =>  {
+    if (showProgress) {
+      return <CircularProgress />
+    } else {
+      if (cam === 'cam1') {
+        return <img src='cameras/cam1.png' />
+      }
+      if (cam === 'cam2') {
+        return <img src='cameras/cam2.png' />
+      }
+    }
+  }
 
   const takePic1 = () => {
     setProgress(true);
@@ -119,12 +119,12 @@ function App() {
         <Grid item xs={12}>
           <Grid item xs={6}>
             <Paper elevation={3}>
-              {renderPic(cam1)}
+              {renderPic('cam1')}
             </Paper>
           </Grid>
           <Grid item xs={6}>
             <Paper elevation={3}>
-              {renderPic(cam2)}
+              {renderPic('cam2')}
             </Paper>
           </Grid>
         </Grid>
