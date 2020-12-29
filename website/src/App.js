@@ -72,7 +72,7 @@ function App() {
   const classes = useStyles();
   const [showProgress, setProgress] = useState(false);
 
-  const renderPic = (cam) =>  {
+  function renderPic(cam) {
     if (showProgress) {
       return <CircularProgress />
     } else {
